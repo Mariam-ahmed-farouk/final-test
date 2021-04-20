@@ -306,7 +306,7 @@ if (flag==1)
   // Free the list (recursively free's all students and take care of all the nasty stuff)
   freeStudentsList(list);
 
-  return 0;
+  return 0;}
 =======
 
 #include <stdio.h>
