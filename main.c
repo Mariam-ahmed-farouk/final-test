@@ -42,7 +42,7 @@ typedef struct s_student student;
 
 struct s_student
 {
-  char name[64];
+  char name[24];
   int id;
   int  marks;
   int day;
