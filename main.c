@@ -44,7 +44,7 @@ struct s_student
 {
   char name[64];
   int id;
-  int score_of_last_year;
+  int  marks;
   int day;
   int month;
   int year;
@@ -182,7 +182,7 @@ student* printStudent(student* stud) {
     if(stud == NULL) return NULL;
     printf("Student name = %s \n", stud->name);
     printf("Student id = %d \n", stud->id);
-    printf("Student score of the last year = %d \n", stud->score_of_last_year);
+    printf("Student  marks= %d \n", stud-> marks);
     printf("Student date of birth = %d/%d/%d \n", stud->day,stud->month,stud->year);
    // return next student
     return stud->nextStudent;
@@ -232,8 +232,8 @@ for(i=0;i<n;i++)
      scanf("%d",&st[i].month);
      printf("please enter the year\n");
      scanf("%d",&st[i].year);
-     printf("please enter the score of the last year of the student\n");
-     scanf("%d",&st[i].score_of_last_year);
+     printf("please enter the  marks of the student\n");
+     scanf("%d",&st[i]. marks);
      insert_at_the_beginning(list, st[i] );
 }
 
@@ -252,8 +252,8 @@ if (flag==1)
      scanf("%d",&st1.month);
      printf("please enter the year\n");
      scanf("%d",&st1.year);
-     printf("please enter the score of the last year of the student\n");
-     scanf("%d",&st1.score_of_last_year);
+     printf("please enter the  marks of the student\n");
+     scanf("%d",&st1.marks);
  insert_at_the_beginning(list, st1);}
  else if (flag==2)
      {
@@ -268,8 +268,8 @@ if (flag==1)
      scanf("%d",&st1.month);
      printf("please enter the year\n");
      scanf("%d",&st1.year);
-     printf("please enter the score of the last year of the student\n");
-     scanf("%d",&st1.score_of_last_year);
+     printf("please enter the  marks of the student\n");
+     scanf("%d",&st1. marks);
  insert_at_the_middle(list, st1);}
   else if(flag==3)
     {
@@ -284,8 +284,8 @@ if (flag==1)
      scanf("%d",&st1.month);
      printf("please enter the year\n");
      scanf("%d",&st1.year);
-     printf("please enter the score of the last year of the student\n");
-     scanf("%d",&st1.score_of_last_year);
+     printf("please enter the marks of the student\n");
+     scanf("%d",&st1.marks);
  insert_at_the_end(list, st1);}
  else {
     //do nothing
@@ -311,6 +311,7 @@ if (flag==1)
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 //code using linked list
 struct student {
     char name[24];
@@ -360,8 +361,17 @@ int main()
     scanf("%d", &data.year);
     printf("Enter marks: ");
     scanf("%d", &data.marks);
-
+     
+    // Calculate the time taken by insertNodeAtBeginning(data);
+    clock_t t1;
+	t1 = clock();
     insertNodeAtBeginning(data);
+    t1 = clock() - t1;
+	double time_taken = ((double)t1)/CLOCKS_PER_SEC; // in seconds
+	printf("inserting node at the begining took %f seconds to execute  \n", time_taken);
+
+
+ 
 
     printf("\nData in the list \n\n");
     displayList();
@@ -386,7 +396,14 @@ int main()
 
     printf("Enter the position to insert new node: " );
     scanf("%d", &position);
+     
+   // Calculate the time taken by   insertNodeAtMiddle(data, position);
+    clock_t t2;
+	t2 = clock();
     insertNodeAtMiddle(data, position);
+    t2 = clock() - t2;
+	double time_taken2 = ((double)t2)/CLOCKS_PER_SEC; // in seconds
+printf("inserting node at the middle took %f seconds to execute  \n", time_taken2);
 
     printf("\nData in the list \n\n");
     displayList();
@@ -408,7 +425,17 @@ int main()
     scanf("%d", &data.year);
     printf("Enter marks: ");
     scanf("%d", &data.marks);
-       insertNodeAtEnd(data);
+     
+     // Calculate the time taken by  insertNodeAtEnd(data);
+     clock_t t3;
+	t3 = clock();
+    insertNodeAtEnd(data);
+    t3 = clock() - t3;
+	double time_taken3 = ((double)t3)/CLOCKS_PER_SEC; // in seconds
+
+    printf("inserting node at the end took %f seconds to execute  \n", time_taken3);
+
+     
 
     printf("\nData in the list \n\n");
     displayList();
